@@ -84,15 +84,27 @@
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
             <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-            <span class="d-none d-md-block dropdown-toggle ps-2">{{app.user.email}}</span>
+            <span class="d-none d-md-block dropdown-toggle ps-2">
+            {% if app.user is not null %}
+                {{ app.user.email }}
+            {% else %}
+                <!-- Handle the case when app.user is null -->
+                Not authenticated
+            {% endif %}
+        </span>
           </a>
           <!-- End Profile Iamge Icon -->
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
-              <h6>{{app.user.name}}
-                {{app.user.prename}}</h6>
-              <span>{{app.user.email}}</span>
+              {% if app.user is not null %}
+            <h6>{{ app.user.name }} {{ app.user.prename }}</h6>
+            <span>{{ app.user.email }}</span>
+        {% else %}
+            <!-- Handle the case when app.user is null -->
+            <h6>Not authenticated</h6>
+            <span>No email available</span>
+        {% endif %}
             </li>
             <li>
               <hr class="dropdown-divider">

@@ -20,7 +20,7 @@
 
 
 
-            {{ form_start(registrationForm) }}
+            {{ form_start(registrationForm,{'attr' : {'novalidate' : 'novalidate' } }) }}
 
             <div class="form-group row mt-2">
                 <div class="col-sm-2">
@@ -29,6 +29,7 @@
                 <div class="col-sm-10">
                     {{ form_widget(registrationForm.name) }}
                 </div>
+                {{ form_errors(registrationForm.name) }}
             </div>
 
             <div class="form-group row mt-2">
@@ -38,6 +39,7 @@
                 <div class="col-sm-10">
                     {{ form_widget(registrationForm.prename) }}
                 </div>
+                {{ form_errors(registrationForm.prename) }}
             </div>
 
             <div class="form-group row mt-2">
@@ -47,6 +49,7 @@
                 <div class="col-sm-10">
                     {{ form_widget(registrationForm.birthday) }}
                 </div>
+                {{ form_errors(registrationForm.birthday) }}
             </div>
 
             <div class="form-group row mt-2">
@@ -56,6 +59,7 @@
                 <div class="col-sm-10">
                     {{ form_widget(registrationForm.adress) }}
                 </div>
+                {{ form_errors(registrationForm.adress) }}
             </div>
 
             <div class="form-group row mt-2">
@@ -65,6 +69,7 @@
                 <div class="col-sm-10">
                     {{ form_widget(registrationForm.phone) }}
                 </div>
+                {{ form_errors(registrationForm.phone) }}
             </div>
 
             <div class="form-group row mt-2">
@@ -74,6 +79,7 @@
                 <div class="col-sm-10">
                     {{ form_widget(registrationForm.email) }}
                 </div>
+                {{ form_errors(registrationForm.email) }}
             </div>
 
             <div class="form-group row mt-2">
@@ -82,8 +88,24 @@
                 </div>
                 <div class="col-sm-10">
                     {{ form_widget(registrationForm.plainPassword, { label: 'Password' }) }}
+                    {{ form_errors(registrationForm.plainPassword) }}
                 </div>
             </div>
+
+            <div class="form-group row mt-2">
+  <div class="col-sm-2">
+    <label for="role">Role:</label>
+  </div>
+  <div class="col-sm-10">
+    <select class="form-control" id="role" name="registrationForm[role]">
+      <option value="ROLE_ADMIN">Admin</option>
+      <option value="ROLE_CLIENT">Client</option>
+      <option value="ROLE_LIVREUR">Livreur</option>
+      <option value="ROLE_FOURNISSEUR">Fournisseur</option>
+    </select>
+  </div>
+</div>
+
 
             <div class="form-group row mt-2">
                 <div class="col-sm-10 offset-sm-2">
